@@ -70,29 +70,19 @@ def encode(number, base):
 
         digit_place += 1
 
-    print bit_to_value_list
-
     encoded_bytes = ""
     digit_place = 1
-
-    print("-------------start-")
     while True:
         if digit_place < len(bit_to_value_list) +1:
             value_for_digit_place = bit_to_value_list[-digit_place]
-
-            print("-------------")
             bit_value_to_add = base -1
             while True:
                 digit_product = bit_value_to_add * value_for_digit_place
-                print("if {} <= {}".format(digit_product, number))
                 if digit_product <= number:
-                    print(True)
                     number -= digit_product
                     encoded_bytes += _bit_for_value(bit_value_to_add)
-                    print encoded_bytes
                     break
                 else:
-                    print(False)
                     bit_value_to_add -= 1
 
                 assert bit_value_to_add >= 0, "negative bit"
@@ -101,18 +91,7 @@ def encode(number, base):
 
         digit_place += 1
 
-    print("-------------end---")
-
-    print "return", encoded_bytes, "number: ", number
-
     return encoded_bytes
-
-    # TODO: Encode number in binary (base 2)
-    # ...
-    # TODO: Encode number in hexadecimal (base 16)
-    # ...
-    # TODO: Encode number in any base (2 up to 36)
-    # ...
 
 
 def convert(digits, base1, base2):
@@ -124,14 +103,11 @@ def convert(digits, base1, base2):
     # Handle up to base 36 [0-9a-z]
     assert 2 <= base1 <= 36, 'base1 is out of range: {}'.format(base1)
     assert 2 <= base2 <= 36, 'base2 is out of range: {}'.format(base2)
-    # TODO: Convert digits from base 2 to base 16 (and vice versa)
-    # ...
-    # TODO: Convert digits from base 2 to base 10 (and vice versa)
-    # ...
-    # TODO: Convert digits from base 10 to base 16 (and vice versa)
-    # ...
-    # TODO: Convert digits from any base to any base (2 up to 36)
-    # ...
+
+    number_10 = decode(digits, base1)
+    converted_number = encode(number_10, base2)
+
+    return converted_number
 
 
 def main():
