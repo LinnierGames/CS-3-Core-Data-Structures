@@ -10,15 +10,28 @@ import string
 # string.printable is digits + ascii_letters + punctuation + whitespace
 
 
-def _value_for_base(bit):
-    bit_key = str(bit)
-    key = [(value, bit) for value, bit in enumerate(string.printable)]
+def _value_for_bit(bit):
+    assert type(bit) is str
+
+    key = [(i, s) for i, s in enumerate(string.printable)]
 
     for a_key in key:
-        if a_key[1] == bit_key:
+        if a_key[1] == bit:
             return a_key[0]
 
-    assert False, "bit, {}, is not represented in list of value, bit pairs\n{}".format(bit, key)
+    assert False, "bit, {}, is not represented in list of value, bit pairs\n{}".format(repr(bit), key)
+
+
+def _bit_for_value(value):
+    assert type(value) is int
+
+    key = [(i, s) for i, s in enumerate(string.printable)]
+
+    for a_key in key:
+        if a_key[0] == value:
+            return a_key[1]
+
+    assert False, "bit, {}, is not represented in list of value, bit pairs\n{}".format(repr(value), key)
 
 
 def decode(digits, base):
@@ -31,7 +44,7 @@ def decode(digits, base):
 
     accumulator = 0
     for digit_place, a_bit in enumerate(digits[::-1]):
-        accumulator += _value_for_base(a_bit) * pow(base, digit_place)
+        accumulator += _value_for_bit(a_bit) * pow(base, digit_place)
 
     return accumulator
 
@@ -50,7 +63,7 @@ def encode(number, base):
     digit_place = 0
     while True:
         value = pow(base, digit_place)
-        if value < number:
+        if value <= number:
             bit_to_value_list.append(value)
         else:
             break
@@ -61,24 +74,36 @@ def encode(number, base):
 
     encoded_bytes = ""
     digit_place = 1
+
+    print("-------------start-")
     while True:
-        print number, digit_place, encoded_bytes
-        if number >= 0:
-            try:  # for even numbers
-                value_for_digit_place = bit_to_value_list[-digit_place]
-            except IndexError:
-                break
-            if number >= value_for_digit_place:
-                number -= value_for_digit_place
-                encoded_bytes += "1"
-            else:
-                encoded_bytes += "0"
+        if digit_place < len(bit_to_value_list) +1:
+            value_for_digit_place = bit_to_value_list[-digit_place]
+
+            print("-------------")
+            bit_value_to_add = base -1
+            while True:
+                digit_product = bit_value_to_add * value_for_digit_place
+                print("if {} <= {}".format(digit_product, number))
+                if digit_product <= number:
+                    print(True)
+                    number -= digit_product
+                    encoded_bytes += _bit_for_value(bit_value_to_add)
+                    print encoded_bytes
+                    break
+                else:
+                    print(False)
+                    bit_value_to_add -= 1
+
+                assert bit_value_to_add >= 0, "negative bit"
         else:
             break
 
         digit_place += 1
 
-    print encoded_bytes
+    print("-------------end---")
+
+    print "return", encoded_bytes, "number: ", number
 
     return encoded_bytes
 
