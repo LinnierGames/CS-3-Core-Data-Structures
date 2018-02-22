@@ -10,6 +10,17 @@ import string
 # string.printable is digits + ascii_letters + punctuation + whitespace
 
 
+def _value_for_base(bit):
+    bit_key = str(bit)
+    key = [(value, bit) for value, bit in enumerate(string.printable)]
+
+    for a_key in key:
+        if a_key[1] == bit_key:
+            return a_key[0]
+
+    assert False, "bit, {}, is not represented in list of value, bit pairs\n{}".format(bit, key)
+
+
 def decode(digits, base):
     """Decode given digits in given base to number in base 10.
     digits: str -- string representation of number (in given base)
@@ -17,12 +28,12 @@ def decode(digits, base):
     return: int -- integer representation of number (in base 10)"""
     # Handle up to base 36 [0-9a-z]
     assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
-    # TODO: Decode digits from binary (base 2)
-    # ...
-    # TODO: Decode digits from hexadecimal (base 16)
-    # ...
-    # TODO: Decode digits from any base (2 up to 36)
-    # ...
+
+    accumulator = 0
+    for digit_place, a_bit in enumerate(digits[::-1]):
+        accumulator += _value_for_base(a_bit) * pow(base, digit_place)
+
+    return accumulator
 
 
 def encode(number, base):
@@ -34,6 +45,43 @@ def encode(number, base):
     assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
     # Handle unsigned numbers only for now
     assert number >= 0, 'number is negative: {}'.format(number)
+
+    bit_to_value_list = []
+    digit_place = 0
+    while True:
+        value = pow(base, digit_place)
+        if value < number:
+            bit_to_value_list.append(value)
+        else:
+            break
+
+        digit_place += 1
+
+    print bit_to_value_list
+
+    encoded_bytes = ""
+    digit_place = 1
+    while True:
+        print number, digit_place, encoded_bytes
+        if number >= 0:
+            try:  # for even numbers
+                value_for_digit_place = bit_to_value_list[-digit_place]
+            except IndexError:
+                break
+            if number >= value_for_digit_place:
+                number -= value_for_digit_place
+                encoded_bytes += "1"
+            else:
+                encoded_bytes += "0"
+        else:
+            break
+
+        digit_place += 1
+
+    print encoded_bytes
+
+    return encoded_bytes
+
     # TODO: Encode number in binary (base 2)
     # ...
     # TODO: Encode number in hexadecimal (base 16)

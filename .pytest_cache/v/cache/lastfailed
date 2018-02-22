@@ -1,0 +1,16 @@
+{
+  "source/bases_test.py::BasesConvertTest::test_convert_binary_to_hexadecimal": true, 
+  "source/bases_test.py::BasesConvertTest::test_convert_decimal_to_hexadecimal": true, 
+  "source/bases_test.py::BasesConvertTest::test_convert_from_binary": true, 
+  "source/bases_test.py::BasesConvertTest::test_convert_hexadecimal_to_binary": true, 
+  "source/bases_test.py::BasesConvertTest::test_convert_hexadecimal_to_decimal": true, 
+  "source/bases_test.py::BasesConvertTest::test_convert_to_binary": true, 
+  "source/bases_test.py::BasesEncodeTest::test_encode_1234": true, 
+  "source/bases_test.py::BasesEncodeTest::test_encode_248975": true, 
+  "source/bases_test.py::BasesEncodeTest::test_encode_binary": true, 
+  "source/bases_test.py::BasesEncodeTest::test_encode_decimal": true, 
+  "source/bases_test.py::BasesEncodeTest::test_encode_hexadecimal": true, 
+  "source/bases_test.py::BasesEncodeTest::test_encode_into_10": true, 
+  "source/bases_test.py::BasesEncodeTest::test_encode_into_1010": true, 
+  "source/bases_test.py::BasesEncodeTest::test_encode_into_101101": true
+}
