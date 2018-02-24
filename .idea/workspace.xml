@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b46bf09c-a024-45f4-bb83-dd01697a88a7" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/source/bases.py" afterPath="$PROJECT_DIR$/source/bases.py" />
-      <change beforePath="$PROJECT_DIR$/source/recursion.py" afterPath="$PROJECT_DIR$/source/recursion.py" />
+      <change beforePath="$PROJECT_DIR$/source/search.py" afterPath="$PROJECT_DIR$/source/search.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,17 +24,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="search.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="search.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/source/search.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-171">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="78">
+              <caret line="35" column="34" lean-forward="false" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="34" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="recursion.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="recursion.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/recursion.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="300">
@@ -73,6 +72,7 @@
         <option value="$PROJECT_DIR$/source/bases_test.py" />
         <option value="$PROJECT_DIR$/source/bases.py" />
         <option value="$PROJECT_DIR$/source/recursion.py" />
+        <option value="$PROJECT_DIR$/source/search.py" />
       </list>
     </option>
   </component>
@@ -237,18 +237,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/search.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-171">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/recursion.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/search.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="35" column="34" lean-forward="false" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="34" />
           <folding />
         </state>
       </provider>
