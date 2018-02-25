@@ -13,7 +13,7 @@ def factorial(n):
 
 
 def factorial_iterative(n):
-    assert n > 0, 'cannot have a negative factorial'
+    assert n >= 0, 'cannot have a negative factorial'
 
     acc = 1  # always returns 1 or more
     while n > 1:
@@ -24,8 +24,8 @@ def factorial_iterative(n):
 
 
 def factorial_recursive(n):
-    assert n > 0, 'cannot have a negative factorial'
-    
+    assert n >= 0, 'cannot have a negative factorial'
+
     # check if n is one of the base cases
     if n == 0 or n == 1:
         return 1
@@ -33,6 +33,17 @@ def factorial_recursive(n):
     elif n > 1:
         # call function recursively
         return n * factorial_recursive(n - 1)
+
+
+def permutation(n, k):
+    if k > n:
+        return 0
+    else:
+        return factorial(n) / factorial(n - k)
+
+
+def combination(n, k):
+    return permutation(n, k) / permutation(k, k)
 
 
 def main():

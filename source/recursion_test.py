@@ -1,6 +1,6 @@
 #!python
 
-from recursion import factorial
+from recursion import factorial, permutation, combination
 import unittest
 
 
@@ -36,6 +36,22 @@ class RecursionTest(unittest.TestCase):
         with self.assertRaises(ValueError, msg='function undefined for float'):
             factorial(2.0)
             factorial(3.14159)
+
+    def test_permutations(self):
+        assert permutation(2, 1) == 2
+        assert permutation(2, 2) == 2
+        assert permutation(5, 2) == 20
+        assert permutation(5, 3) == 60
+        assert permutation(50, 1) == 50
+        assert permutation(50, 2) == 2450
+
+    def test_combinations(self):
+        assert combination(2, 1) == 2
+        assert combination(2, 2) == 1
+        assert combination(5, 2) == 10
+        assert combination(5, 3) == 10
+        assert combination(50, 1) == 50
+        assert combination(50, 2) == 1225
 
 
 if __name__ == '__main__':
