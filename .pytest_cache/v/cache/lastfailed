@@ -1,1 +1,5 @@
-{}
+{
+  "source/binarytree_test.py": true, 
+  "source/queue_test.py": true, 
+  "source/stack_test.py": true
+}

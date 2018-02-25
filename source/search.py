@@ -39,41 +39,88 @@ def binary_search(array, item):
 
 def binary_search_iterative(array, item):
     length = len(array)
-    offset = 0
-    lower = 0
-    upper = length -1
+    left = 0
+    right = length -1
 
-    while lower != upper:
-        midpoint = length // 2 +offset
-        lower_adjacent_item = array[midpoint -1]
-        upper_adjacent_item = array[midpoint]
+    # split array until left bound and right bound are equal
+    while left != right:
+        length = right - left +1
+        midpoint = length // 2 +left
 
-        # Check if item is at the midpoint
-        if item == lower_adjacent_item:
-            return midpoint -1
-        elif item == upper_adjacent_item:
-            return midpoint
-        elif length == 2:  # if item is not at midpoint and the length is 2, item not found
-            return None
+        # is item after/before midpoint
+        if item >= array[midpoint]:
+            # discard left half
+            left = midpoint
+        else:
+            # discard right half
+            right = midpoint -1
 
-        if item > lower_adjacent_item:  # discard lower half
-            offset += midpoint - lower
-            lower = midpoint
-        else:  # discard upper half
-            upper = midpoint
-
-        length = upper - lower +1
-
-        print lower, length, upper
-
-    if array[lower] == item:
-        return lower
+    # does split array, of one, equal item?
+    if array[left] == item:
+        return left
     else:
         return None
 
 
 def binary_search_recursive(array, item, left=None, right=None):
-    # TODO: implement binary search recursively here
-    pass
-    # once implemented, change binary_search to call binary_search_recursive
-    # to verify that your recursive implementation passes all tests
+    # setup left and right bounds
+    if left is not None:
+        length = right - left + 1
+        midpoint = length // 2 + left
+    else:
+        length = len(array)
+        left = 0
+        right = length -1
+        midpoint = length // 2
+
+    # does left and right equal the item
+    if length == 1:
+        if item != array[left]:
+            # not found, does not exist
+            return None
+        else:
+            # found
+            return left
+
+    # is item after/before midpoint
+    if item >= array[midpoint]:
+        # discard left
+        return binary_search_recursive(array, item, midpoint, right)
+    else:
+        # discard right
+        return binary_search_recursive(array, item, left, midpoint -1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
