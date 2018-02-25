@@ -13,8 +13,9 @@ def factorial(n):
 
 
 def factorial_iterative(n):
-    # TODO: implement the factorial function iteratively here
-    acc = 1
+    assert n > 0, 'cannot have a negative factorial'
+
+    acc = 1  # always returns 1 or more
     while n > 1:
         acc *= n
         n -= 1
@@ -23,6 +24,8 @@ def factorial_iterative(n):
 
 
 def factorial_recursive(n):
+    assert n > 0, 'cannot have a negative factorial'
+    
     # check if n is one of the base cases
     if n == 0 or n == 1:
         return 1
