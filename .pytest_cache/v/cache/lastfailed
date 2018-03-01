@@ -1,5 +1,6 @@
 {
   "source/binarytree_test.py": true, 
+  "source/linkedlist_test.py::LinkedListTest::test_iterator": true, 
   "source/queue_test.py": true, 
   "source/stack_test.py": true, 
   "source/strings.py::test_string_algorithms": true

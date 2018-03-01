@@ -8,6 +8,7 @@ class Node(object):
         """Initialize this node with the given data."""
         self.data = data
         self.next = None
+        self.prev = None
 
     def __repr__(self):
         """Return a string representation of this node."""
@@ -34,6 +35,43 @@ class LinkedList(object):
     def __repr__(self):
         """Return a string representation of this linked list."""
         return 'LinkedList({!r})'.format(self.items())
+
+    def __len__(self):
+        return self.size
+
+    def __getitem__(self, index):
+        try:
+            return self.get_at_index(index)
+        except ValueError as err:
+            raise err
+
+    def __setitem__(self, index, value):
+        # Check if the given index is out of range and if so raise an error
+        if not (0 <= index < self.size):
+            raise ValueError('List index out of range: {}'.format(index))
+
+        curr_node = self.head
+
+        # iterate throughout the whole list
+        while True:
+
+            # exhausted the linked list
+            if curr_node is None:
+                return None
+
+            # continue iterating
+            else:
+
+                # counter, index, has hit zero
+                if index == 0:
+
+                    # replace the data
+                    curr_node.data = value
+
+                # decrease the counter, index, and iterate the curr_node
+                else:
+                    curr_node = curr_node.next
+                    index -= 1
 
     def items(self):
         """Return a list of all items in this linked list.
@@ -65,20 +103,7 @@ class LinkedList(object):
         Best and worst case running time: ??? under what conditions? [TODO]"""
 
         # Node counter initialized to zero
-        node_count = 0
-
-        # Start at the head node
-        node = self.head
-
-        # Loop until the node is None, which is one node too far past the tail
-        while node is not None:
-
-            # Count one for this node, and iterate to the next node
-            node_count += 1
-            node = node.next
-
-        # Now node_count contains the number of nodes
-        return node_count
+        return self.size
 
     def get_at_index(self, index):
         """Return the item at the given index in this linked list, or
@@ -137,31 +162,37 @@ class LinkedList(object):
                 # set the head and tail to the new_node
                 self.head = self.tail = new_node
 
-            # just inserting at the beginning of list.size > 1
+            # base: inserting at the beginning of list.size > 1
             else:
                 new_node.next = self.head
+                self.head.prev = new_node
+
+                # reset head
                 self.head = new_node
 
         # edge: insert at the tail
         elif index == self.size:
             self.tail.next = new_node
+            new_node.prev = self.tail
+
+            # reset tail
             self.tail = new_node
 
-        # base cases, insert in the middle
+        # base: insert in the middle
         else:
-            prev_node = None
-
             # iterate to the desired index while the counter, index is > 0
             while index > 0:
-                prev_node = curr_node
                 curr_node = curr_node.next
                 index -= 1
 
-            # insert the new_node
-            prev_node.next = new_node
+            # insert the new_node, attach the prev and the cur node to new_node
+            previous_node = curr_node.prev
+            previous_node.next = new_node
+            curr_node.prev = new_node
 
-            # update new_node.next to curr_node
+            # update new_node to curr_node and previous_node
             new_node.next = curr_node
+            new_node.prev = previous_node
 
         self.size += 1
 
@@ -169,45 +200,15 @@ class LinkedList(object):
         """Insert the given item at the tail of this linked list.
         Best and worst case running time: ??? under what conditions? [TODO]"""
 
-        # Create a new node to hold the given item
-        new_node = Node(item)
-
-        # Check if this linked list is empty
-        if self.is_empty():
-
-            # Assign head to new node
-            self.head = new_node
-        else:
-
-            # Otherwise insert new node after tail
-            self.tail.next = new_node
-
-        # Update tail to new node regardless
-        self.tail = new_node
-
-        self.size += 1
+        # insert at the size of the list
+        self.insert_at_index(self.size, item)
 
     def prepend(self, item):
         """Insert the given item at the head of this linked list.
         Best and worst case running time: ??? under what conditions? [TODO]"""
 
-        # Create a new node to hold the given item
-        new_node = Node(item)
-
-        # Check if this linked list is empty
-        if self.is_empty():
-
-            # Assign tail to new node
-            self.tail = new_node
-        else:
-
-            # Otherwise insert new node before head
-            new_node.next = self.head
-
-        # Update head to new node regardless
-        self.head = new_node
-
-        self.size += 1
+        # insert at the zero index
+        self.insert_at_index(0, item)
 
     def find(self, quality):
         """Return an item from this linked list satisfying the given quality.
@@ -262,9 +263,6 @@ class LinkedList(object):
         # Start at the head node
         node = self.head
 
-        # Keep track of the node before the one containing the given item
-        previous = None
-
         # Create a flag to track if we have found the given item
         found = False
 
@@ -279,7 +277,6 @@ class LinkedList(object):
             else:
 
                 # Skip to the next node
-                previous = node
                 node = node.next
 
         # Check if we found the given item or we never did and reached the tail
@@ -287,37 +284,62 @@ class LinkedList(object):
 
             # Check if we found a node in the middle of this linked list
             if node is not self.head and node is not self.tail:
+                print "delete middle, {}".format(item)
 
                 # Update the previous node to skip around the found node
-                previous.next = node.next
+                previous = node.prev
+                adjacent_node = node.next
+                previous.next = adjacent_node
 
-                # Unlink the found node from its next node
+                # Unlink the adjacent nodes from the found node
+                adjacent_node.prev = previous
+
+                # Unlink the found node from the adjacent nodes
+                node.prev = None
                 node.next = None
 
+
             # Check if we found a node at the head
-            if node is self.head:
+            elif node is self.head:
+                print "delete head, h: {}".format(self.head)
 
                 # Update head to the next node
-                self.head = node.next
+                adjacent_node = node.next
+                self.head = adjacent_node
+
+                # if head is none, tail is also none
+                if self.head is None:
+                    self.tail = None
 
                 # Unlink the found node from the next node
+                if adjacent_node is not None:
+                    adjacent_node.prev = None
+
                 node.next = None
 
             # Check if we found a node at the tail
-            if node is self.tail:
+            elif node is self.tail:
+                print "delete tail, h: {}".format(self.tail)
 
                 # Check if there is a node before the found node
-                if previous is not None:
+                if node.prev is not None:
 
                     # Unlink the previous node from the found node
+                    previous = node.prev
                     previous.next = None
 
                 # Update tail to the previous node regardless
-                self.tail = previous
+                self.tail = node.prev
+
+                # if head is none, tail is also none
+                if self.tail is None:
+                    self.head = None
+
+                node.prev = None
 
             self.size -= 1
         else:
-            
+
             # Otherwise raise an error to tell the user that delete has failed
             raise ValueError('Item not found: {}'.format(item))
 

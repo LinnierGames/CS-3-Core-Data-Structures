@@ -177,6 +177,13 @@ class LinkedListTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             ll.delete('X')  # item not in list
 
+    def test_iterator(self):
+        ll = LinkedList(['one', 'two', 'three'])
+        assert ll.size == 3
+        assert ll.items() == ['one', 'two', 'three']
+        for an_item in ll:
+            assert an_item in ['one', 'two', 'three']
+
 
 if __name__ == '__main__':
     unittest.main()
