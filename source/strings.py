@@ -11,38 +11,26 @@ def contains(text, pattern, t_index=0, p_index=0):
 
     # edge: pattern is empty string
     if len(pattern) == 0:
-        print("empty string")
-
         return True
 
     # pattern was found in text
     elif p_index == len(pattern):
-        print("pattern was found")
-
         return True
 
     # exhausted the search of the text, pattern not found
     elif t_index == len(text):
-        print("pattern in text")
-
         return False
 
     # t_index == p_index, increment both indexes and continue searching pattern
     elif text[t_index] == pattern[p_index]:
-        print("a match found")
-
         return contains(text, pattern, t_index +1, p_index +1)
 
     # a match was found previously but now it's a mismatch, reset the t_index
     elif text[t_index] != pattern[p_index]:
-        print("match, but mismatch found")
-
         return contains(text, pattern, t_index - p_index +1, 0)
 
     # no match, t_index++
     else:
-        print("no match")
-
         return contains(text, pattern, t_index +1, 0)
 
 
@@ -54,25 +42,18 @@ def find_index(text, pattern, t_index=0, p_index=0, index=None):
 
     # edge: pattern is empty string
     if len(pattern) == 0:
-        print("empty string")
-
         return 0
 
     # pattern was found in text
     elif p_index == len(pattern):
-        print("pattern was found")
-
         return index
 
     # exhausted the search of the text, pattern not found
     elif t_index == len(text):
-        print("pattern in text")
-
         return None
 
     # t_index == p_index, increment both indexes and continue searching pattern
     elif text[t_index] == pattern[p_index]:
-        print("a match found")
         if index is None:
             index = t_index
 
@@ -80,15 +61,12 @@ def find_index(text, pattern, t_index=0, p_index=0, index=None):
 
     # a match was found previously but now it's a mismatch, reset the t_index
     elif text[t_index] != pattern[p_index]:
-        print("match, but mismatch found")
         index = None
 
         return find_index(text, pattern, t_index - p_index +1, 0, index)
 
     # no match, t_index++
     else:
-        print("no match")
-
         return find_index(text, pattern, t_index +1, 0)
 
 
@@ -97,7 +75,21 @@ def find_all_indexes(text, pattern):
     or an empty list if not found."""
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
-    # TODO: Implement find_all_indexes here (iteratively and/or recursively)
+
+    occurrences = []
+    offset = 0
+
+    # use the find_index(..) while chopping off the
+    while text != "":
+        new_index = find_index(text, pattern)
+        if new_index is not None:
+            occurrences.append(new_index +offset)
+            text = text[new_index +1:]
+            offset += new_index +1
+        else:
+            break
+
+    return occurrences
 
 
 def test_string_algorithms(text, pattern):
