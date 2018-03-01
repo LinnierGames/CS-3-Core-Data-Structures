@@ -1,5 +1,7 @@
 #!python
 
+import pdb
+
 class Node(object):
 
     def __init__(self, data):
@@ -102,7 +104,36 @@ class LinkedList(object):
         # Check if the given index is out of range and if so raise an error
         if not (0 <= index <= self.size):
             raise ValueError('List index out of range: {}'.format(index))
-        # TODO: Find the node before the given index and insert item after it
+
+        curr_node = self.head
+        inserted = False
+
+        new_node = Node(item)
+
+        # edge: insert at the head
+        if index == 0:
+            if self.head is None:
+                self.head = self.tail = new_node
+            else:
+                new_node.next = self.head
+                self.head = new_node
+
+        # edge: insert at the tail
+        elif index == self.size:
+            self.tail.next = new_node
+            self.tail = new_node
+
+        # base cases, insert in the middle
+        else:
+            # iterate to the desired index
+            prev_node = None
+            while index > 0:
+                prev_node = curr_node
+                curr_node = curr_node.next
+                index -= 1
+
+            prev_node.next = new_node
+            new_node.next = curr_node
 
         self.size += 1
 
