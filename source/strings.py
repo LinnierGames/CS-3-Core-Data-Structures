@@ -1,10 +1,49 @@
 #!python
+import pdb
 
-def contains(text, pattern):
+def contains(text, pattern, t_index=0, p_index=0):
     """Return a boolean indicating whether pattern occurs in text."""
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # TODO: Implement contains here (iteratively and/or recursively)
+
+    # return pattern in text
+
+    # edge: pattern is empty string
+    if len(pattern) == 0:
+        print("empty string")
+
+        return True
+
+    # pattern was found in text
+    elif p_index == len(pattern):
+        print("pattern was found")
+
+        return True
+
+    # exhausted the search of the text, pattern not found
+    elif t_index == len(text):
+        print("pattern in text")
+
+        return False
+
+    # t_index == p_index, increment both indexes and continue searching pattern
+    elif text[t_index] == pattern[p_index]:
+        print("a match found")
+
+        return contains(text, pattern, t_index +1, p_index +1)
+
+    # a match was found previously but now it's a mismatch, reset the t_index
+    elif p_index != 0 and text[t_index] != pattern[p_index]:
+        print("match, but mismatch found")
+
+        return contains(text, pattern, t_index - p_index +1, 0)
+
+    # no match, t_index++
+    else:
+        print("no match")
+
+        return contains(text, pattern, t_index +1, 0)
 
 
 def find_index(text, pattern):
