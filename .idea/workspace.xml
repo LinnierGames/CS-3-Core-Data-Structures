@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b46bf09c-a024-45f4-bb83-dd01697a88a7" name="Default" comment="" />
+    <list default="true" id="b46bf09c-a024-45f4-bb83-dd01697a88a7" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/source/deque.py" afterPath="$PROJECT_DIR$/source/deque.py" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,12 +17,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="deque.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="deque.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/deque.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="580">
-              <caret line="76" column="0" lean-forward="true" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+            <state relative-caret-position="535">
+              <caret line="80" column="0" lean-forward="true" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="deque_test.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/source/deque_test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1035">
+              <caret line="69" column="25" lean-forward="true" selection-start-line="69" selection-start-column="25" selection-end-line="69" selection-end-column="25" />
+              <folding>
+                <element signature="e#10#39#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -37,9 +52,11 @@
       <file leaf-file-name="queue_test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/queue_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="475">
+              <caret line="66" column="23" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+              <folding>
+                <element signature="e#10#33#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -49,6 +66,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="407">
               <caret line="91" column="0" lean-forward="true" selection-start-line="91" selection-start-column="0" selection-end-line="92" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="linkedlist.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/linkedlist.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="223">
+              <caret line="130" column="28" lean-forward="false" selection-start-line="130" selection-start-column="18" selection-end-line="130" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -85,6 +112,7 @@
         <option value="$PROJECT_DIR$/source/linkedlist.py" />
         <option value="$PROJECT_DIR$/source/stack.py" />
         <option value="$PROJECT_DIR$/source/queue.py" />
+        <option value="$PROJECT_DIR$/source/deque_test.py" />
         <option value="$PROJECT_DIR$/source/deque.py" />
       </list>
     </option>
@@ -509,22 +537,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/queue_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/linkedlist.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1479">
-          <caret line="358" column="24" lean-forward="false" selection-start-line="358" selection-start-column="0" selection-end-line="359" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/stack.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="407">
@@ -541,11 +553,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/source/linkedlist.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="130" column="28" lean-forward="false" selection-start-line="130" selection-start-column="18" selection-end-line="130" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/queue_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="66" column="23" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+          <folding>
+            <element signature="e#10#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/source/deque.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="76" column="0" lean-forward="true" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+        <state relative-caret-position="535">
+          <caret line="80" column="0" lean-forward="true" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/deque_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1035">
+          <caret line="69" column="25" lean-forward="true" selection-start-line="69" selection-start-column="25" selection-end-line="69" selection-end-column="25" />
+          <folding>
+            <element signature="e#10#39#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

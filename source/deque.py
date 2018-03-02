@@ -5,7 +5,7 @@ from linkedlist import LinkedList
 
 # Implement LinkedQueue below, then change the assignment at the bottom
 # to use this Queue implementation to verify it passes all tests
-class LinkedQueue(object):
+class LinkedDeque(object):
 
     def __init__(self, iterable=None):
         """Initialize this queue and enqueue the given items, if any."""
@@ -20,58 +20,67 @@ class LinkedQueue(object):
         return 'Queue({} items, front={})'.format(self.length(), self.front())
 
     def is_empty(self):
-        """
-        Implement is_empty - check if the deque is empty
-        :return: bool
-        """
-        pass
+        return self.length() == 0
 
     def length(self):
-        """
-        Implement length - return the number of items in the deque
-        :return: int
-        """
-        pass
+        return self.list.length()
 
     def push_front(self, item):
         """
-        Implement push_front(item) - insert item at the front of the deque
-        :return: void
+        Add to the front of the queue
         """
-        pass
+
+        self.list.prepend(item)
 
     def push_back(self, item):
         """
-        Implement push_back(item) - insert item at the back of the deque
+        Add to the back of the queue
         :return: void
         """
-        pass
+
+        self.list.append(item)
 
     def front(self):
         """
-        Implement front - return the item at the front of the deque
-        :return: int
+        Peek the front of the queue
         """
-        pass
+
+        if self.is_empty():
+            return None
+
+        return self.list.get_at_index(0)
 
     def back(self):
         """
         Implement back - return the item at the back of the deque
         :return: int
         """
-        pass
+
+        if self.is_empty():
+            return None
+
+        back_index = self.length() -1
+        return self.list.get_at_index(back_index)
 
     def pop_front(self):
         """
         Implement pop_front - remove and return the item at the front of the deque
         :return: int
         """
-        pass
+
+        popped_item = self.front()
+        self.list.delete(popped_item)
+
+        return popped_item
 
     def pop_back(self):
         """
         Implement pop_back - remove and return the item at the back of the deque
         :return: int
         """
-        pass
+
+        popped_item = self.back()
+        self.list.delete(popped_item)
+
+        return popped_item
 
