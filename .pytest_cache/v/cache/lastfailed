@@ -2,11 +2,5 @@
   "source/binarytree_test.py": true, 
   "source/linkedlist_test.py::LinkedListTest::test_iterator": true, 
   "source/queue_test.py": true, 
-  "source/stack_test.py::StackTest::test_init": true, 
-  "source/stack_test.py::StackTest::test_init_with_list": true, 
-  "source/stack_test.py::StackTest::test_length": true, 
-  "source/stack_test.py::StackTest::test_peek": true, 
-  "source/stack_test.py::StackTest::test_pop": true, 
-  "source/stack_test.py::StackTest::test_push": true, 
   "source/strings.py::test_string_algorithms": true
 }

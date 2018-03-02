@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b46bf09c-a024-45f4-bb83-dd01697a88a7" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/.pytest_cache/v/cache/lastfailed" afterPath="$PROJECT_DIR$/.pytest_cache/v/cache/lastfailed" />
-      <change beforePath="$PROJECT_DIR$/source/linkedlist.py" afterPath="$PROJECT_DIR$/source/linkedlist.py" />
-      <change beforePath="$PROJECT_DIR$/source/linkedlist_test.py" afterPath="$PROJECT_DIR$/source/linkedlist_test.py" />
       <change beforePath="$PROJECT_DIR$/source/stack.py" afterPath="$PROJECT_DIR$/source/stack.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="stack.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="stack.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/source/stack.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="23" column="30" lean-forward="true" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
+            <state relative-caret-position="540">
+              <caret line="36" column="23" lean-forward="false" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -40,11 +37,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="linkedlist.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="linkedlist.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/linkedlist.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+            <state relative-caret-position="233">
+              <caret line="358" column="24" lean-forward="false" selection-start-line="358" selection-start-column="0" selection-end-line="359" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -87,9 +84,9 @@
         <option value="$PROJECT_DIR$/source/palindromes.py" />
         <option value="$PROJECT_DIR$/source/strings_test.py" />
         <option value="$PROJECT_DIR$/source/strings.py" />
-        <option value="$PROJECT_DIR$/source/stack.py" />
         <option value="$PROJECT_DIR$/source/linkedlist_test.py" />
         <option value="$PROJECT_DIR$/source/linkedlist.py" />
+        <option value="$PROJECT_DIR$/source/stack.py" />
       </list>
     </option>
   </component>
@@ -489,22 +486,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/stack_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/stack.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="23" column="30" lean-forward="true" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/linkedlist_test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -523,8 +504,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/source/linkedlist.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        <state relative-caret-position="233">
+          <caret line="358" column="24" lean-forward="false" selection-start-line="358" selection-start-column="0" selection-end-line="359" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/stack_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/stack.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="23" lean-forward="false" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
           <folding />
         </state>
       </provider>
