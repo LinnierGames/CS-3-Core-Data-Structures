@@ -95,7 +95,7 @@ class ArrayStack(object):
         self.list.remove(data_popped)
 
         return data_popped
-    
+
 
 # Implement LinkedStack and ArrayStack above, then change the assignment below
 # to use each of your Stack implementations to verify they each pass all tests
