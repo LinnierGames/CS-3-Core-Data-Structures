@@ -10,7 +10,8 @@ class NodeTest(unittest.TestCase):
         data = 'ABC'
         node = Node(data)
         assert node.data is data
-        assert node.next is None
+        assert node.n is None
+        assert node.p is None
 
 
 class LinkedListTest(unittest.TestCase):

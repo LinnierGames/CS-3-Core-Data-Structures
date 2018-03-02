@@ -26,22 +26,16 @@ class LinkedStack(object):
     def length(self):
         """Return the number of items in this stack."""
         # TODO: Count number of items
+        return self.list.length()
 
     def push(self, item):
-        """Insert the given item on the top of this stack.
-        Running time: O(???) – Why? [TODO]"""
-        # TODO: Push given item
+        self.list.append(item)
 
     def peek(self):
-        """Return the item on the top of this stack without removing it,
-        or None if this stack is empty."""
-        # TODO: Return top item, if any
+        return self.list.tail.data
 
     def pop(self):
-        """Remove and return the item on the top of this stack,
-        or raise ValueError if this stack is empty.
-        Running time: O(???) – Why? [TODO]"""
-        # TODO: Remove and return top item, if any
+        self.list.delete(self.list.tail.data)
 
 
 # Implement ArrayStack below, then change the assignment at the bottom
@@ -69,19 +63,18 @@ class ArrayStack(object):
         # TODO: Count number of items
 
     def push(self, item):
-        """Insert the given item on the top of this stack.
-        Running time: O(???) – Why? [TODO]"""
+        pass
         # TODO: Insert given item
 
+
     def peek(self):
+        pass
         """Return the item on the top of this stack without removing it,
         or None if this stack is empty."""
         # TODO: Return top item, if any
 
     def pop(self):
-        """Remove and return the item on the top of this stack,
-        or raise ValueError if this stack is empty.
-        Running time: O(???) – Why? [TODO]"""
+        pass
         # TODO: Remove and return top item, if any
 
 

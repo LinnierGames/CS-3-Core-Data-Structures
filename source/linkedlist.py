@@ -7,12 +7,24 @@ class Node(object):
     def __init__(self, data):
         """Initialize this node with the given data."""
         self.data = data
-        self.next = None
-        self.prev = None
+        self.n = None
+        self.p = None
 
     def __repr__(self):
         """Return a string representation of this node."""
         return 'Node({!r})'.format(self.data)
+
+
+class LinkedListIterator(object):
+
+    def __init__(self, node):
+        self.node = node
+
+    def next(self):
+        if self.node.n is not None:
+            return self.node
+        else:
+            raise StopIteration()
 
 
 class LinkedList(object):
@@ -38,6 +50,9 @@ class LinkedList(object):
 
     def __len__(self):
         return self.size
+
+    def __iter__(self):
+        return LinkedListIterator(self.head)
 
     def __getitem__(self, index):
         try:
@@ -70,7 +85,7 @@ class LinkedList(object):
 
                 # decrease the counter, index, and iterate the curr_node
                 else:
-                    curr_node = curr_node.next
+                    curr_node = curr_node.n
                     index -= 1
 
     def items(self):
@@ -89,7 +104,7 @@ class LinkedList(object):
 
             # Append this node's data to the results list
             result.append(node.data)  # Constant time to append to a list
-            node = node.next  # Constant time to reassign a variable
+            node = node.n  # Constant time to reassign a variable
 
         # Now result contains the data from all nodes
         return result  # Constant time to return a list
@@ -135,7 +150,7 @@ class LinkedList(object):
 
                 # decrease the counter, index, and iterate the curr_node
                 else:
-                    curr_node = curr_node.next
+                    curr_node = curr_node.n
                     index -= 1
 
     def insert_at_index(self, index, item):
@@ -164,16 +179,16 @@ class LinkedList(object):
 
             # base: inserting at the beginning of list.size > 1
             else:
-                new_node.next = self.head
-                self.head.prev = new_node
+                new_node.n = self.head
+                self.head.p = new_node
 
                 # reset head
                 self.head = new_node
 
         # edge: insert at the tail
         elif index == self.size:
-            self.tail.next = new_node
-            new_node.prev = self.tail
+            self.tail.n = new_node
+            new_node.p = self.tail
 
             # reset tail
             self.tail = new_node
@@ -182,17 +197,17 @@ class LinkedList(object):
         else:
             # iterate to the desired index while the counter, index is > 0
             while index > 0:
-                curr_node = curr_node.next
+                curr_node = curr_node.n
                 index -= 1
 
             # insert the new_node, attach the prev and the cur node to new_node
-            previous_node = curr_node.prev
-            previous_node.next = new_node
-            curr_node.prev = new_node
+            previous_node = curr_node.p
+            previous_node.n = new_node
+            curr_node.p = new_node
 
             # update new_node to curr_node and previous_node
-            new_node.next = curr_node
-            new_node.prev = previous_node
+            new_node.n = curr_node
+            new_node.p = previous_node
 
         self.size += 1
 
@@ -229,7 +244,7 @@ class LinkedList(object):
                 return node.data  # Constant time to return data
 
             # Skip to the next node
-            node = node.next  # Constant time to reassign a variable
+            node = node.n  # Constant time to reassign a variable
 
         # We never found data satisfying quality, but have to return something
         return None  # Constant time to return None
@@ -250,7 +265,7 @@ class LinkedList(object):
                 did_replace = True
                 break
             else:
-                curr_node = curr_node.next
+                curr_node = curr_node.n
 
         if not did_replace:
             raise ValueError, 'did not find {}'.format(old_item)
@@ -277,7 +292,7 @@ class LinkedList(object):
             else:
 
                 # Skip to the next node
-                node = node.next
+                node = node.n
 
         # Check if we found the given item or we never did and reached the tail
         if found:
@@ -287,16 +302,16 @@ class LinkedList(object):
                 print "delete middle, {}".format(item)
 
                 # Update the previous node to skip around the found node
-                previous = node.prev
-                adjacent_node = node.next
-                previous.next = adjacent_node
+                previous = node.p
+                adjacent_node = node.n
+                previous.n = adjacent_node
 
                 # Unlink the adjacent nodes from the found node
-                adjacent_node.prev = previous
+                adjacent_node.p = previous
 
                 # Unlink the found node from the adjacent nodes
-                node.prev = None
-                node.next = None
+                node.p = None
+                node.n = None
 
 
             # Check if we found a node at the head
@@ -304,7 +319,7 @@ class LinkedList(object):
                 print "delete head, h: {}".format(self.head)
 
                 # Update head to the next node
-                adjacent_node = node.next
+                adjacent_node = node.n
                 self.head = adjacent_node
 
                 # if head is none, tail is also none
@@ -313,29 +328,29 @@ class LinkedList(object):
 
                 # Unlink the found node from the next node
                 if adjacent_node is not None:
-                    adjacent_node.prev = None
+                    adjacent_node.p = None
 
-                node.next = None
+                node.n = None
 
             # Check if we found a node at the tail
             elif node is self.tail:
                 print "delete tail, h: {}".format(self.tail)
 
                 # Check if there is a node before the found node
-                if node.prev is not None:
+                if node.p is not None:
 
                     # Unlink the previous node from the found node
-                    previous = node.prev
-                    previous.next = None
+                    previous = node.p
+                    previous.n = None
 
                 # Update tail to the previous node regardless
-                self.tail = node.prev
+                self.tail = node.p
 
                 # if head is none, tail is also none
                 if self.tail is None:
                     self.head = None
 
-                node.prev = None
+                node.p = None
 
             self.size -= 1
         else:
