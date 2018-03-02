@@ -38,7 +38,7 @@ class LinkedQueue(object):
 
     def dequeue(self):
         if self.is_empty():
-            raise ValueError('Empty list')
+            raise ValueError("Queue is empty")
 
         dequeued_item = self.front()
         self.list.delete(dequeued_item)
@@ -64,27 +64,36 @@ class ArrayQueue(object):
 
     def is_empty(self):
         """Return True if this queue is empty, or False otherwise."""
-        # TODO: Check if empty
+
+        return self.length() == 0
 
     def length(self):
         """Return the number of items in this queue."""
-        # TODO: Count number of items
+
+        return len(self.list)
 
     def enqueue(self, item):
-        pass
-        # TODO: Insert given item
+        self.list.append(item)
 
     def front(self):
         """Return the item at the front of this queue without removing it,
         or None if this queue is empty."""
-        # TODO: Return front item, if any
+        if self.is_empty():
+            return None
+
+        return self.list[0]
 
     def dequeue(self):
-        pass
-        # TODO: Remove and return front item, if any
+        if self.is_empty():
+            raise ValueError("Queue is empty")
+
+        dequeued_item = self.front()
+        self.list.remove(dequeued_item)
+
+        return dequeued_item
 
 
 # Implement LinkedQueue and ArrayQueue above, then change the assignment below
 # to use each of your Queue implementations to verify they each pass all tests
-Queue = LinkedQueue
+Queue = ArrayQueue
 # Queue = ArrayQueue
