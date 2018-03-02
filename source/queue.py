@@ -34,12 +34,14 @@ class LinkedQueue(object):
         if self.is_empty():
             return None
 
+        # subscript the last item in the list
         return self.list.get_at_index(0)
 
     def dequeue(self):
         if self.is_empty():
             raise ValueError("Queue is empty")
 
+        # peek before deleting
         dequeued_item = self.front()
         self.list.delete(dequeued_item)
 
@@ -81,12 +83,14 @@ class ArrayQueue(object):
         if self.is_empty():
             return None
 
+        # subscript the last item in the list
         return self.list[0]
 
     def dequeue(self):
         if self.is_empty():
             raise ValueError("Queue is empty")
 
+        # peek before deleting
         dequeued_item = self.front()
         self.list.remove(dequeued_item)
 
