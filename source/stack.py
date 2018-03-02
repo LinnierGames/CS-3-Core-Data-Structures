@@ -26,7 +26,6 @@ class LinkedStack(object):
 
     def length(self):
         """Return the number of items in this stack."""
-
         return self.list.length()
 
     def push(self, item):
@@ -36,12 +35,14 @@ class LinkedStack(object):
         if self.is_empty():
             return None
 
+        # the tail is the 'last' item in the stack
         return self.list.tail.data
 
     def pop(self):
         if self.is_empty():
             raise ValueError('Empty list')
 
+        # peek the last value before deleting
         data_popped = self.peek()
         self.list.delete(data_popped)
 
@@ -81,19 +82,20 @@ class ArrayStack(object):
         if self.is_empty():
             return None
 
-        return self.list[self.length() -1]
+        # subscript the last item in the list
+        last_index = self.length() -1
+        return self.list[last_index]
 
     def pop(self):
         if self.is_empty():
             raise ValueError('Empty list')
 
+        # peek before deleting
         data_popped = self.peek()
         self.list.remove(data_popped)
 
         return data_popped
-
-
-
+    
 
 # Implement LinkedStack and ArrayStack above, then change the assignment below
 # to use each of your Stack implementations to verify they each pass all tests
