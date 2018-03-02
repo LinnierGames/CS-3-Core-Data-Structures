@@ -42,7 +42,7 @@ class LinkedStack(object):
         if self.is_empty():
             raise ValueError('Empty list')
 
-        data_popped = self.list.tail.data
+        data_popped = self.peek()
         self.list.delete(data_popped)
 
         return data_popped
@@ -66,29 +66,36 @@ class ArrayStack(object):
 
     def is_empty(self):
         """Return True if this stack is empty, or False otherwise."""
-        # TODO: Check if empty
+
+        return self.length() == 0
 
     def length(self):
         """Return the number of items in this stack."""
-        # TODO: Count number of items
+
+        return len(self.list)
 
     def push(self, item):
-        pass
-        # TODO: Insert given item
-
+        self.list.append(item)
 
     def peek(self):
-        pass
-        """Return the item on the top of this stack without removing it,
-        or None if this stack is empty."""
-        # TODO: Return top item, if any
+        if self.is_empty():
+            return None
+
+        return self.list[self.length() -1]
 
     def pop(self):
-        pass
-        # TODO: Remove and return top item, if any
+        if self.is_empty():
+            raise ValueError('Empty list')
+
+        data_popped = self.peek()
+        self.list.remove(data_popped)
+
+        return data_popped
+
+
 
 
 # Implement LinkedStack and ArrayStack above, then change the assignment below
 # to use each of your Stack implementations to verify they each pass all tests
-Stack = LinkedStack
+Stack = ArrayStack
 # Stack = ArrayStack
