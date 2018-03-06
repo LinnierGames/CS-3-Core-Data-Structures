@@ -29,14 +29,14 @@ class LinkedStack(object):
         return self.list.length()
 
     def push(self, item):
-        self.list.append(item)
+        self.list.prepend(item)
 
     def peek(self):
         if self.is_empty():
             return None
 
         # the tail is the 'last' item in the stack
-        return self.list.tail.data
+        return self.list.head.data
 
     def pop(self):
         if self.is_empty():
