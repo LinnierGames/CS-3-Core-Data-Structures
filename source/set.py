@@ -26,3 +26,17 @@ class Set(HashSet):
                 self_items.remove(an_item)
 
         return self_items
+
+    def is_subset(self, other_set):
+        self_items = self.items()
+        other_items = other_set.items()
+
+        is_a_subset = True
+
+        for an_element in self_items:
+            if not (an_element in other_items):
+                is_a_subset = False
+                break
+
+        return is_a_subset
+
