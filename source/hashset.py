@@ -3,13 +3,17 @@
 from linkedlist import LinkedList
 
 
-class HashTable(object):
+class HashSet(object):
 
-    def __init__(self, init_size=8):
+    def __init__(self, elements=None):
         """Initialize this hash table with the given initial size."""
-
+        init_size = 8
         self.buckets = [LinkedList() for i in range(init_size)]
         self.size = 0  # Number of key-value entries
+
+        if elements is not None:
+            for an_element in elements:
+                self.add(an_element)
 
     def __str__(self):
         """Return a formatted string representation of this hash table."""
@@ -22,9 +26,12 @@ class HashTable(object):
 
         return 'HashTable({!r})'.format(self.items())
 
-    def _bucket_index(self, key):
+    def __len__(self):
+        return self.size
+
+    def _bucket_index(self, element):
         """Return the bucket index where the given key would be stored."""
-        return hash(key) % len(self.buckets)
+        return hash(element) % len(self.buckets)
 
     def load_factor(self):
         """Return the load factor, the ratio of number of entries to buckets.
@@ -36,127 +43,74 @@ class HashTable(object):
         # floating point division
         return float(entries) / float(buckets) if buckets != 0 else 0
 
-    def keys(self):
+    def items(self):
         """Return a list of all keys in this hash table.
         Best and worst case running time: ??? under what conditions? [TODO]"""
 
         # Collect all keys in each of the buckets
-        all_keys = []
+        all_elements = []
         for bucket in self.buckets:
-            for key, value in bucket.items():
-                all_keys.append(key)
+            for an_element in bucket.items():
+                all_elements.append(an_element)
 
-        return all_keys
+        return all_elements
 
-    def values(self):
-        """Return a list of all values in this hash table.
-        Best and worst case running time: ??? under what conditions? [TODO]"""
-
-        # Collect all values in each of the buckets
-        all_values = []
-        for bucket in self.buckets:
-            for key, value in bucket.items():
-                all_values.append(value)
-
-        return all_values
-
-    def items(self):
-        """Return a list of all entries (key-value pairs) in this hash table.
-        Best and worst case running time: ??? under what conditions? [TODO]"""
-
-        # Collect all pairs of key-value entries in each of the buckets
-        all_items = []
-        for bucket in self.buckets:
-            all_items.extend(bucket.items())
-        return all_items
-
-    def length(self):
-        """Return the number of key-value entries by traversing its buckets.
-        Best and worst case running time: ??? under what conditions? [TODO]"""
-
-        # Equivalent to this list comprehension:
-        return sum(bucket.length() for bucket in self.buckets)
-
-    def contains(self, key):
+    def contains(self, element):
         """Return True if this hash table contains the given key, or False.
         Best case running time: ??? under what conditions? [TODO]
         Worst case running time: ??? under what conditions? [TODO]"""
 
         # Find the bucket the given key belongs in
-        index = self._bucket_index(key)
+        index = self._bucket_index(element)
         bucket = self.buckets[index]
 
         # Check if an entry with the given key exists in that bucket
-        entry = bucket.find(lambda key_value: key_value[0] == key)
-        return entry is not None  # True or False
+        found_element = bucket.find(lambda an_element: an_element == element)
 
-    def get(self, key):
-        """Return the value associated with the given key, or raise KeyError.
-        Best case running time: ??? under what conditions? [TODO]
-        Worst case running time: ??? under what conditions? [TODO]"""
+        # True or False
+        return found_element is not None
 
-        # Find the bucket the given key belongs in
-        index = self._bucket_index(key)
-        bucket = self.buckets[index]
-
-        # Find the entry with the given key in that bucket, if one exists
-        entry = bucket.find(lambda key_value: key_value[0] == key)
-        if entry is not None:  # Found
-
-            # Return the given key's associated value
-            assert isinstance(entry, tuple)
-            assert len(entry) == 2
-            return entry[1]
-
-        else:  # Not found
-            raise KeyError('Key not found: {}'.format(key))
-
-    def set(self, key, value):
+    def add(self, element):
         """Insert or update the given key with its associated value.
         Best case running time: ??? under what conditions? [TODO]
         Worst case running time: ??? under what conditions? [TODO]"""
 
         # Find the bucket the given key belongs in
-        index = self._bucket_index(key)
+        index = self._bucket_index(element)
         bucket = self.buckets[index]
 
         # Find the entry with the given key in that bucket, if one exists
         # Check if an entry with the given key exists in that bucket
-        entry = bucket.find(lambda key_value: key_value[0] == key)
-        if entry is not None:  # Found
+        found_element = bucket.find(lambda an_element: an_element == element)
+        if found_element is None:  # Not Found
 
-            # In this case, the given key's value is being updated
-            # Remove the old key-value entry from the bucket first
-            bucket.delete(entry)
-            self.size -= 1
+            # Insert the new key-value entry into the bucket in either case
+            bucket.append(element)
+            self.size += 1
 
-        # Insert the new key-value entry into the bucket in either case
-        bucket.append((key, value))
-        self.size += 1
+            # check load factory
+            if self.load_factor() > 0.75:
+                self._resize()
 
-        # check load factory
-        if self.load_factor() > 0.75:
-            self._resize()
-
-    def delete(self, key):
+    def remove(self, element):
         """Delete the given key and its associated value, or raise KeyError.
         Best case running time: ??? under what conditions? [TODO]
         Worst case running time: ??? under what conditions? [TODO]"""
 
         # Find the bucket the given key belongs in
-        index = self._bucket_index(key)
+        index = self._bucket_index(element)
         bucket = self.buckets[index]
 
         # Find the entry with the given key in that bucket, if one exists
-        entry = bucket.find(lambda key_value: key_value[0] == key)
-        if entry is not None:  # Found
+        found_element = bucket.find(lambda an_element: an_element == element)
+        if found_element is not None:  # Found
 
             # Remove the key-value entry from the bucket
-            bucket.delete(entry)
+            bucket.delete(found_element)
             self.size -= 1
 
         else:  # Not found
-            raise KeyError('Key not found: {}'.format(key))
+            raise ValueError('Key not found: {}'.format(found_element))
 
     def _resize(self, new_size=None):
         """Resize this hash table's buckets and rehash all key-value entries.
@@ -180,12 +134,10 @@ class HashTable(object):
         self.buckets = [LinkedList() for i in range(new_size)]
         self.size = 0
 
-        for an_item in to_be_transferred:
-            key = an_item[0]
-            value = an_item[1]
+        for an_element in to_be_transferred:
 
             # insert the transferred items to their new buckets
-            self.set(key, value)
+            self.add(an_element)
 
 
 def test_hash_table():
