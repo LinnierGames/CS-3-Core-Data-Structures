@@ -1,5 +1,6 @@
 {
   "source/binarytree_test.py": true, 
   "source/linkedlist_test.py::LinkedListTest::test_iterator": true, 
+  "source/set_test.py::HashSetTest::test_union": true, 
   "source/strings.py::test_string_algorithms": true
 }

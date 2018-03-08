@@ -36,6 +36,12 @@ class HashSetTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             set.remove('C')
 
+    def test_union(self):
+        set1 = Set(['A', 'B'])
+        set2 = Set(['B', 'C'])
+        new_union = set1.union(set2).items()
+        assert ['A', 'B', 'C'] <= new_union
+
 
 
 if __name__ == '__main__':

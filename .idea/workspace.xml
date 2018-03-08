@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b46bf09c-a024-45f4-bb83-dd01697a88a7" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/.pytest_cache/v/cache/lastfailed" afterPath="$PROJECT_DIR$/.pytest_cache/v/cache/lastfailed" />
+      <change beforePath="$PROJECT_DIR$/source/set.py" afterPath="$PROJECT_DIR$/source/set.py" />
+      <change beforePath="$PROJECT_DIR$/source/set_test.py" afterPath="$PROJECT_DIR$/source/set_test.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,12 +19,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="linkedlist.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/linkedlist.py">
+      <file leaf-file-name="set.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/set.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="244" column="0" lean-forward="true" selection-start-line="244" selection-start-column="0" selection-end-line="244" selection-end-column="0" />
+            <state relative-caret-position="165">
+              <caret line="11" column="52" lean-forward="true" selection-start-line="11" selection-start-column="52" selection-end-line="11" selection-end-column="52" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="set_test.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/source/set_test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="42" column="43" lean-forward="true" selection-start-line="42" selection-start-column="43" selection-end-line="42" selection-end-column="43" />
+              <folding>
+                <element signature="e#10#29#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -36,43 +51,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="set.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/source/set.py">
+      <file leaf-file-name="linkedlist.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/linkedlist.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="36" lean-forward="false" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="hashset_test.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/hashset_test.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="8" column="16" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-              <folding>
-                <element signature="e#10#37#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="set_test.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/set_test.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="19" lean-forward="false" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="deque_test.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/deque_test.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="65" column="26" lean-forward="true" selection-start-line="65" selection-start-column="26" selection-end-line="65" selection-end-column="26" />
+            <state relative-caret-position="282">
+              <caret line="244" column="0" lean-forward="true" selection-start-line="244" selection-start-column="0" selection-end-line="244" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -116,8 +99,8 @@
         <option value="$PROJECT_DIR$/source/hastset_test.py" />
         <option value="$PROJECT_DIR$/source/hashset_test.py" />
         <option value="$PROJECT_DIR$/source/hashset.py" />
-        <option value="$PROJECT_DIR$/source/set_test.py" />
         <option value="$PROJECT_DIR$/source/set.py" />
+        <option value="$PROJECT_DIR$/source/set_test.py" />
       </list>
     </option>
   </component>
@@ -197,6 +180,14 @@
       <option name="presentableId" value="Default" />
       <updated>1519325086547</updated>
     </task>
+    <task id="LOCAL-00001" summary="set and its tests">
+      <created>1520523832079</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1520523832079</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TodoView">
@@ -260,6 +251,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="set and its tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="set and its tests" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -617,6 +612,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/source/hashset_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="8" column="16" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding>
+            <element signature="e#10#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/source/linkedlist.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="282">
@@ -633,29 +638,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/hashset_test.py">
+    <entry file="file://$PROJECT_DIR$/source/set.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="8" column="16" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding>
-            <element signature="e#10#37#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="165">
+          <caret line="11" column="52" lean-forward="true" selection-start-line="11" selection-start-column="52" selection-end-line="11" selection-end-column="52" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/source/set_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="19" lean-forward="false" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/set.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="36" lean-forward="false" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
-          <folding />
+        <state relative-caret-position="300">
+          <caret line="42" column="43" lean-forward="true" selection-start-line="42" selection-start-column="43" selection-end-line="42" selection-end-column="43" />
+          <folding>
+            <element signature="e#10#29#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
