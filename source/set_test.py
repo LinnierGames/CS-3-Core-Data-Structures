@@ -42,6 +42,12 @@ class HashSetTest(unittest.TestCase):
         new_union = set1.union(set2).items()
         assert ['A', 'B', 'C'] <= new_union
 
+    def test_intersection(self):
+        set1 = Set(['A', 'B'])
+        set2 = Set(['B', 'C'])
+        new_intersection = set1.intersection(set2)
+        assert ['B'] <= new_intersection
+
 
 
 if __name__ == '__main__':
