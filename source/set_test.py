@@ -46,7 +46,15 @@ class HashSetTest(unittest.TestCase):
         set1 = Set(['A', 'B'])
         set2 = Set(['B', 'C'])
         new_intersection = set1.intersection(set2)
+        assert len(new_intersection) == 1
         assert ['B'] <= new_intersection
+
+    def test_difference(self):
+        set1 = Set(['A', 'B'])
+        set2 = Set(['B', 'C'])
+        new_difference = set1.difference(set2)
+        assert len(new_difference) == 1
+        assert ['A'] <= new_difference
 
 
 
