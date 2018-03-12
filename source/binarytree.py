@@ -1,7 +1,7 @@
 #!python
 
 from queue import LinkedQueue
-
+from stack import LinkedStack
 
 class BinaryTreeNode(object):
 
@@ -238,7 +238,7 @@ class BinarySearchTree(object):
         items = []
         if not self.is_empty():
             # Traverse tree in-order from root, appending each node's item
-            self._traverse_in_order_recursive(self.root, items.append)
+            self._traverse_in_order_iterative(self.root, items.append)
         # Return in-order list of all items in tree
         return items
 
@@ -257,14 +257,41 @@ class BinarySearchTree(object):
         Start at the given node and visit each node with the given function.
         TODO: Running time: ??? Why and under what conditions?
         TODO: Memory usage: ??? Why and under what conditions?"""
-        # TODO: Traverse in-order without using recursion (stretch challenge)
+
+        stack = LinkedStack()
+        stack.push(node)
+
+        while stack.is_empty() is False:
+
+            # add to stack while node.left exist
+            if node.left is not None:
+
+                # add left, or smaller, node on top
+                stack.push(node.left)
+
+                # iterate left tree
+                node = node.left
+
+            # begin iterating right tree
+            else:
+                """once the left tree of node is None, we can begin popping and iterating the right side"""
+
+                # visit the top node in the stack
+                node = stack.pop()
+                visit(node.data)
+
+                # iterate the right node since the left node is now empty
+                if node.right is not None:
+                    stack.push(node.right)
+                    node = node.right
+
 
     def items_pre_order(self):
         """Return a pre-order list of all items in this binary search tree."""
         items = []
         if not self.is_empty():
             # Traverse tree pre-order from root, appending each node's item
-            self._traverse_pre_order_recursive(self.root, items.append)
+            self._traverse_pre_order_iterative(self.root, items.append)
         # Return pre-order list of all items in tree
         return items
 
@@ -283,7 +310,43 @@ class BinarySearchTree(object):
         Start at the given node and visit each node with the given function.
         TODO: Running time: ??? Why and under what conditions?
         TODO: Memory usage: ??? Why and under what conditions?"""
-        # TODO: Traverse pre-order without using recursion (stretch challenge)
+
+        stack = LinkedStack()
+        stack.push(node)
+
+        while stack.is_empty() is False:
+
+            peeked = stack.peek()
+            visit(peeked.data)
+
+            # add to stack while node.left exist
+            if node.left is not None:
+
+                # add left, or smaller, node on top
+                stack.push(node.left)
+
+                # iterate left tree
+                node = node.left
+
+            # begin iterating right tree
+            else:
+                """once the left tree of node is None, we can begin popping and iterating the right side"""
+
+                while True and stack.is_empty() is False:
+                    if node.right is None:
+                        node = stack.pop()
+
+
+
+
+
+                    else:
+                        # iterate the right node since the left node is now empty
+                        stack.push(node.right)
+                        node = node.right
+                        break
+
+
 
     def items_post_order(self):
         """Return a post-order list of all items in this binary search tree."""

@@ -1,4 +1,6 @@
 {
+  "source/binarytree_test.py::BinarySearchTreeTest::test_items_pre_order_with_3_strings": true, 
+  "source/binarytree_test.py::BinarySearchTreeTest::test_items_pre_order_with_7_numbers": true, 
   "source/linkedlist_test.py::LinkedListTest::test_iterator": true, 
   "source/strings.py::test_string_algorithms": true
 }
