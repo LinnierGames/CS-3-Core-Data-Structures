@@ -236,10 +236,13 @@ class BinarySearchTree(object):
 
     def items_in_order(self):
         """Return an in-order list of all items in this binary search tree."""
+
         items = []
         if not self.is_empty():
+
             # Traverse tree in-order from root, appending each node's item
             self._traverse_in_order_iterative(self.root, items.append)
+
         # Return in-order list of all items in tree
         return items
 
@@ -379,8 +382,10 @@ class BinarySearchTree(object):
         """Return a level-order list of all items in this binary search tree."""
         items = []
         if not self.is_empty():
+
             # Traverse tree level-order from root, appending each node's item
             self._traverse_level_order_iterative(self.root, items.append)
+
         # Return level-order list of all items in tree
         return items
 
@@ -390,13 +395,19 @@ class BinarySearchTree(object):
         TODO: Running time: ??? Why and under what conditions?
         TODO: Memory usage: ??? Why and under what conditions?"""
 
+        # a queue of unvisited descendant nodes
         queue = LinkedQueue()
+
+        # begin with the start_node
         queue.enqueue(start_node)
 
+        # continue if queue contains any unvisited nodes
         while queue.is_empty() is False:
+            # deque and visit the node
             node = queue.dequeue()
-
             visit(node.data)
+
+            # enqueue the node's children, if exists
             queue.enqueue(node.left) if node.left is not None else None
             queue.enqueue(node.right) if node.right is not None else None
 
