@@ -30,23 +30,24 @@ class BinaryTreeNode(object):
         downward path from this node to a descendant leaf node).
         TODO: Best and worst case running time: ??? under what conditions?"""
 
+        # base case: leafs have a height of zero
         if self.is_leaf():
             return 0
 
+        # edge: find height of left descendant, if exist
         if self.left is not None:
             left_height = self.left.height()
         else:
             left_height = 0
 
+        # edge: find height of right descendant, if exist
         if self.right is not None:
             right_height = self.right.height()
         else:
             right_height = 0
 
-        if left_height > right_height:
-            return left_height + 1
-        else:
-            return right_height + 1
+        # the height of a node is the longest of the two children
+        return max(left_height, right_height) + 1
 
 
 class BinarySearchTree(object):
