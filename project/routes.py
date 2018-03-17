@@ -3,7 +3,7 @@ import sys
 
 from hashtable import HashTable
 
-file_of_numbers = "data/phone-numbers-100.txt"
+file_of_numbers = "data/phone-numbers-10000.txt"
 file_of_costs = "data/route-costs-100.txt"
 
 
@@ -33,12 +33,6 @@ def _map_route_costs():
     return hash_cost
 
 
-routes_costs = _map_route_costs()
-
-print 'get keys of hash'
-routes_costs_keys = routes_costs.keys()
-
-
 def cost_of_number(number):
 
     longest_match_key = None
@@ -54,10 +48,21 @@ def cost_of_number(number):
     return routes_costs.get(longest_match_key) if longest_match_key is not None else 0
 
 
-with open(_path_for(file_of_numbers)) as f_numbers_to_call:
-    phone_numbers_to_call = [line.rstrip('\n') for line in f_numbers_to_call]
+if __name__ == "__main__":
 
-for a_number in phone_numbers_to_call:
-    cost = cost_of_number(a_number)
-    if cost != 0:
-        print(cost)
+    # store the route costs into key-value pairs (prefix, cost)
+    routes_costs = _map_route_costs()
+    routes_costs_keys = routes_costs.keys()
+
+    # print cost_of_number("+8163975")
+
+    # create a list of the numbers to check the cost of
+    with open(_path_for(file_of_numbers)) as f_numbers_to_call:
+        phone_numbers_to_call = [line.rstrip('\n') for line in f_numbers_to_call]
+
+    print routes_costs_keys
+
+    for a_number in phone_numbers_to_call:
+        cost = cost_of_number(a_number)
+        if cost != 0:
+            print("{},{}".format(a_number, cost))
