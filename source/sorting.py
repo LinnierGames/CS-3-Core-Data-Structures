@@ -5,7 +5,15 @@ def is_sorted(items):
     """Return a boolean indicating whether given items are in sorted order.
     TODO: Running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
-    # TODO: Check that all adjacent items are in order, return early if not
+
+    for index in range(0, len(items) -1):
+        element = items[index]
+        adjacent_element = items[index +1]
+
+        if element > adjacent_element:
+            return False
+
+    return True
 
 
 def bubble_sort(items):
@@ -13,8 +21,26 @@ def bubble_sort(items):
     repeating until all items are in sorted order.
     TODO: Running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
-    # TODO: Repeat until all items are in sorted order
-    # TODO: Swap adjacent items that are out of order
+
+    while True:
+        did_swap = False
+
+        # iterate throughout the items and swap out of ordered pairs
+        for index in range(0, len(items) -1):
+            adjacent_index = index +1
+            element = items[index]
+            adjacent_element = items[adjacent_index]
+
+            # swap the elements if the are not in order
+            if element > adjacent_element:
+                items[index] = adjacent_element
+                items[adjacent_index] = element
+
+                did_swap = True
+
+        # if the iteration completed without swapping, the list is sorted
+        if did_swap is False:
+            break
 
 
 def selection_sort(items):
