@@ -75,9 +75,24 @@ def insertion_sort(items):
     order in front of items, and repeating until all items are in order.
     TODO: Running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
-    # TODO: Repeat until all items are in sorted order
-    # TODO: Take first unsorted item
-    # TODO: Insert it in sorted order in front of items
+
+    length = len(items)
+
+    # iterate throughout the items once
+    for index in range(0, length):
+
+        for insert_index in range(index, 0, -1):
+            current_checking_value = items[insert_index]
+            current_adjacent_value = items[insert_index -1]
+
+            if current_checking_value > current_adjacent_value:
+                break
+
+            # swap
+            items[insert_index -1] = current_checking_value
+            items[insert_index] = current_adjacent_value
+
+
 
 
 def merge(items1, items2):
