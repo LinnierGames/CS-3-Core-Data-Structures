@@ -18,18 +18,21 @@ class IsSortedTest(unittest.TestCase):
         assert is_sorted([3, 3]) is True  # Duplicate items are in order
         assert is_sorted([3, 5]) is True
         assert is_sorted([3, 5, 7]) is True
-        # TODO: Write more positive test cases with assert is True statements
-        # You'll need a lot more than this to test sorting algorithm robustness
-        # ...
+        assert is_sorted([3, 3, 5, 7, 9, 9, 100, 101]) is True
+        assert is_sorted([-3, 0, 3, 5, 7]) is True
+        assert is_sorted([-3, -2, -1, 0]) is True
+        assert is_sorted([0]) is True
 
     def test_is_sorted_on_unsorted_integers(self):
         # Negative test cases (counterexamples) with lists of unsorted integers
         assert is_sorted([5, 3]) is False
         assert is_sorted([3, 5, 3]) is False
         assert is_sorted([7, 5, 3]) is False
-        # TODO: Write more negative test cases with assert is False statements
-        # You'll need a lot more than this to test sorting algorithm robustness
-        # ...
+        assert is_sorted([-7, 5, -3]) is False
+        assert is_sorted([7, -5, -3]) is False
+        assert is_sorted([7, 5, -3]) is False
+        assert is_sorted([7, 5, 3, 0]) is False
+        assert is_sorted([0, -1]) is False
 
     def test_is_sorted_on_sorted_strings(self):
         # Positive test cases (examples) with lists of sorted strings
