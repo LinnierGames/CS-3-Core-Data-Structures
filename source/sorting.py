@@ -154,14 +154,17 @@ def split_sort_merge(items):
     a list in sorted order.
     TODO: Running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
-    # TODO: Split items list into approximately equal halves
+
+    # split items list into approximately equal halves
     half_index = len(items) // 2
     list_a = items[:half_index]
     list_b = items[half_index:]
-    # TODO: Sort each half using any other sorting algorithm
+
+    # sort each half using any other sorting algorithm
     list_a.sort()
     list_b.sort()
-    # TODO: Merge sorted halves into one list in sorted order
+
+    # merge sorted halves into one list in sorted order
     merged_list = merge(list_a, list_b)
 
     return merged_list
@@ -172,10 +175,18 @@ def merge_sort(items):
     sorting each recursively, and merging results into a list in sorted order.
     TODO: Running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
-    # TODO: Check if list is so small it's already sorted (base case)
-    # TODO: Split items list into approximately equal halves
-    # TODO: Sort each half by recursively calling merge sort
-    # TODO: Merge sorted halves into one list in sorted order
+
+    # items is already sorted
+    if len(items) <= 1:
+        return items
+
+    # split items list into approximately equal halves
+    half_index = len(items) // 2
+    list_a = items[:half_index]
+    list_b = items[half_index:]
+
+    # merge recursively called sorted halves into one list in sorted order
+    return merge(merge_sort(list_a), merge_sort(list_b))
 
 
 def partition(items, low, high):
@@ -262,7 +273,7 @@ def main():
     print split_sort_merge([7,1,3,2,5,2,8,5])
 
 
-
+    print merge_sort([1000,7,1,1,2,5,2,1,5,1])
 
     return
     """Read command-line arguments and test sorting algorithms."""
