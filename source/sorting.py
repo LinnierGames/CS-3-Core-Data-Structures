@@ -23,8 +23,6 @@ def bubble_sort(items):
     TODO: Memory usage: ??? Why and under what conditions?"""
 
     while True:
-        did_swap = False
-
         # iterate throughout the items and swap out of ordered pairs
         for index in range(0, len(items) -1):
             adjacent_index = index +1
@@ -36,10 +34,10 @@ def bubble_sort(items):
                 items[index] = adjacent_element
                 items[adjacent_index] = element
 
-                did_swap = True
+                continue
+        else:
 
-        # if the iteration completed without swapping, the list is sorted
-        if did_swap is False:
+            # if the iteration completed without swapping, the list is sorted
             break
 
 
@@ -93,16 +91,59 @@ def insertion_sort(items):
             items[insert_index] = current_adjacent_value
 
 
-
-
 def merge(items1, items2):
     """Merge given lists of items, each assumed to already be in sorted order,
     and return a new list containing all items in sorted order.
     TODO: Running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
-    # TODO: Repeat until one list is empty
-    # TODO: Find minimum item in both lists and append it to new list
-    # TODO: Append remaining items in non-empty list to new list
+
+    list_a_index = 0
+    list_a_last_index = len(items1) -1
+    list_b_index = 0
+    list_b_last_index = len(items2) -1
+
+    # other words list c
+    merged_list = list()
+    while True:
+
+        # list a is not finished
+        if list_a_index <= list_a_last_index:
+
+            # list b is not finished
+            if list_b_index <= list_b_last_index:
+                current_a_value = items1[list_a_index]
+                current_b_value = items2[list_b_index]
+
+                # find smallest
+                if current_a_value <= current_b_value:
+                    merged_list.append(current_a_value)
+                    list_a_index += 1
+                else:
+                    merged_list.append(current_b_value)
+                    list_b_index += 1
+
+            # list b is finished: append all of a onto list c
+            else:
+                list_a_value = items1[list_a_index]
+                merged_list.append(list_a_value)
+                list_a_index += 1
+
+        # list a is finished
+        else:
+
+            # list b is not finished
+            if list_b_index <= list_b_last_index:
+
+                # append all of list b onto list c
+                list_b_value = items2[list_b_index]
+                merged_list.append(list_b_value)
+                list_b_index += 1
+
+            # list b and a are finished:
+            else:
+                break
+
+    return merged_list
 
 
 def split_sort_merge(items):
@@ -201,6 +242,17 @@ def test_sorting(sort=bubble_sort, num_items=20, max_value=50):
 
 
 def main():
+    a = [1,3,5,7]
+    b = [2,2,5,8]
+
+    c = merge(a, b)
+
+    print c
+
+
+
+
+    return
     """Read command-line arguments and test sorting algorithms."""
     import sys
     args = sys.argv[1:]  # Ignore script file name
