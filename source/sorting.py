@@ -124,6 +124,7 @@ def merge(items1, items2):
 
             # list b is finished: append all of a onto list c
             else:
+                # TODO: merge all items at once vs throughout iterations of the while loop
                 list_a_value = items1[list_a_index]
                 merged_list.append(list_a_value)
                 list_a_index += 1
@@ -135,6 +136,7 @@ def merge(items1, items2):
             if list_b_index <= list_b_last_index:
 
                 # append all of list b onto list c
+                # TODO: merge all items at once vs throughout iterations of the while loop
                 list_b_value = items2[list_b_index]
                 merged_list.append(list_b_value)
                 list_b_index += 1
@@ -153,8 +155,16 @@ def split_sort_merge(items):
     TODO: Running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
     # TODO: Split items list into approximately equal halves
+    half_index = len(items) // 2
+    list_a = items[:half_index]
+    list_b = items[half_index:]
     # TODO: Sort each half using any other sorting algorithm
+    list_a.sort()
+    list_b.sort()
     # TODO: Merge sorted halves into one list in sorted order
+    merged_list = merge(list_a, list_b)
+
+    return merged_list
 
 
 def merge_sort(items):
@@ -248,6 +258,8 @@ def main():
     c = merge(a, b)
 
     print c
+
+    print split_sort_merge([7,1,3,2,5,2,8,5])
 
 
 
