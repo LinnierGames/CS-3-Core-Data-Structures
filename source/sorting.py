@@ -263,19 +263,6 @@ def test_sorting(sort=bubble_sort, num_items=20, max_value=50):
 
 
 def main():
-    a = [1,3,5,7]
-    b = [2,2,5,8]
-
-    c = merge(a, b)
-
-    print c
-
-    print split_sort_merge([7,1,3,2,5,2,8,5])
-
-
-    print merge_sort([1000,7,1,1,2,5,2,1,5,1])
-
-    return
     """Read command-line arguments and test sorting algorithms."""
     import sys
     args = sys.argv[1:]  # Ignore script file name
