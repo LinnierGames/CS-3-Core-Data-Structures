@@ -87,8 +87,8 @@ def insertion_sort(items):
                 break
 
             # swap
-            items[insert_index -1] = current_checking_value
-            items[insert_index] = current_adjacent_value
+            _swap(items, insert_index -1, insert_index)
+            # items[insert_index -1], items[insert_index] = current_checking_value, current_adjacent_value
 
 
 def merge(items1, items2):
@@ -178,7 +178,7 @@ def merge_sort(items):
 
     # items is already sorted
     if len(items) <= 1:
-        return items
+        return
 
     # split items list into approximately equal halves
     half_index = len(items) // 2
@@ -186,7 +186,14 @@ def merge_sort(items):
     list_b = items[half_index:]
 
     # merge recursively called sorted halves into one list in sorted order
-    return merge(merge_sort(list_a), merge_sort(list_b))
+    merge_sort(list_a)
+    merge_sort(list_b)
+
+    items[:] = merge(list_a, list_b)
+
+
+def _swap(items, index_a, index_b):
+    items[index_a], items[index_b] = items[index_b], items[index_a]
 
 
 def partition(items, low, high):
@@ -196,7 +203,25 @@ def partition(items, low, high):
     `[low...p-1]`, and items greater than pivot into range `[p+1...high]`.
     TODO: Running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
+
+    # [ *, p , * ]
     # TODO: Choose a pivot any way and document your method in docstring above
+    pivot_index = low
+    pivot_value = items[pivot_index]
+    incremented_pivot = pivot_index +1
+
+    for i in range(low, high):
+        i_value = items[i]
+
+        if i_value < pivot_value:
+            _swap(items, i, incremented_pivot)
+            # items[incremented_pivot], items[i] = items[i], items[incremented_pivot]
+            incremented_pivot += 1
+
+    _swap(items, pivot_index, incremented_pivot -1)
+
+    # return the new pivot index
+    return incremented_pivot -1
     # TODO: Loop through all items in range [low...high]
     # TODO: Move items less than pivot into front of range [low...p-1]
     # TODO: Move items greater than pivot into back of range [p+1...high]
@@ -263,6 +288,13 @@ def test_sorting(sort=bubble_sort, num_items=20, max_value=50):
 
 
 def main():
+
+    items = [4,5,2,3,4,6,7,8,9]
+    partition(items,0, 9)
+
+    print items
+
+    return
     """Read command-line arguments and test sorting algorithms."""
     import sys
     args = sys.argv[1:]  # Ignore script file name
