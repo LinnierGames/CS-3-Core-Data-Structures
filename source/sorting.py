@@ -210,9 +210,11 @@ def partition(items, low, high):
     pivot_value = items[pivot_index]
     incremented_pivot = pivot_index +1
 
+    # print "part:", items, low, high
+
     # shift values larger than pivot value after all values smaller than the pivot value,
     # thus creating two sets
-    for i in range(low, high):
+    for i in range(low, high +1):
         i_value = items[i]
 
         # swap values that are smaller than the pivot value and increment the sorted set
@@ -222,6 +224,8 @@ def partition(items, low, high):
 
     # relocate the pivot value to be between the two sets
     _swap(items, pivot_index, incremented_pivot -1)
+
+    # print "parted:", items
 
     # return the new pivot index
     return incremented_pivot -1
@@ -234,9 +238,33 @@ def quick_sort(items, low=None, high=None):
     TODO: Worst case running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
     # TODO: Check if high and low range bounds have default values (not given)
+
+    if len(items) == 0:
+        return
+
+    if low is None:
+        low = 0
+        high = len(items) -1
+
     # TODO: Check if list or range is so small it's already sorted (base case)
-    # TODO: Partition items in-place around a pivot and get index of pivot
-    # TODO: Sort each sublist range by recursively calling quick sort
+    if high - low == 1:
+
+        # bubble sort the slice of size 2
+        if items[high] < items[low]:
+            _swap(items, low, high)
+    else:
+
+        # TODO: Partition items in-place around a pivot and get index of pivot
+        new_pivot = partition(items, low, high)
+
+        # TODO: Sort each sublist range by recursively calling quick sort
+        new_low = new_pivot -1
+        if new_low > low:
+            quick_sort(items, low, new_low)
+
+        new_high = new_pivot +1
+        if new_high < high:
+            quick_sort(items, new_high, high)
 
 
 def counting_sort(numbers):
@@ -288,8 +316,8 @@ def test_sorting(sort=bubble_sort, num_items=20, max_value=50):
 
 def main():
 
-    items = [4,5,2,3,4,6,7,8,9]
-    partition(items,0, 9)
+    items = [2, 7, 7, 8, 8, 14, 16, 17, 18, 20]
+    quick_sort(items)
 
     print items
 
