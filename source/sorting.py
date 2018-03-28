@@ -210,22 +210,21 @@ def partition(items, low, high):
     pivot_value = items[pivot_index]
     incremented_pivot = pivot_index +1
 
+    # shift values larger than pivot value after all values smaller than the pivot value,
+    # thus creating two sets
     for i in range(low, high):
         i_value = items[i]
 
+        # swap values that are smaller than the pivot value and increment the sorted set
         if i_value < pivot_value:
             _swap(items, i, incremented_pivot)
-            # items[incremented_pivot], items[i] = items[i], items[incremented_pivot]
             incremented_pivot += 1
 
+    # relocate the pivot value to be between the two sets
     _swap(items, pivot_index, incremented_pivot -1)
 
     # return the new pivot index
     return incremented_pivot -1
-    # TODO: Loop through all items in range [low...high]
-    # TODO: Move items less than pivot into front of range [low...p-1]
-    # TODO: Move items greater than pivot into back of range [p+1...high]
-    # TODO: Move pivot item into final position [p] and return index p
 
 
 def quick_sort(items, low=None, high=None):
